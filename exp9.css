@@ -97,4 +97,15 @@ button:hover {
         width: 100%;
     }
 }
-
+/*laptop ( 4 columns) */
+@media (max-width: 243px) {
+    .grid-container {
+        grid-template-columns: repeat( 4, 3fr);
+    } 
+    .card img {
+        height : 100px;
+    }
+    button {
+        width: 100%
+    }
+}

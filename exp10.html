@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Responsive Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- General Reset & Typography --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+        }
+
+        /* --- Navbar Container --- */
+        .navbar {
+            background-color: #222;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+
+        /* --- Logo (Left) --- */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            /* Order 1: Visually first */
+            order: 1;
+            /* Give it a fixed width or flex-basis so the center calculation is even */
+            flex: 1; 
+        }
+
+        /* --- Navigation Links (Center) --- */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            /* Order 2: Visually in the middle */
+            order: 2;
+            /* Takes up remaining space and centers the content */
+            flex: 2;
+            justify-content: center;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #ff9800;
+        }
+
+        /* --- Action Buttons (Right) --- */
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            /* Order 3: Visually last */
+            order: 3;
+            /* Match flex of logo to ensure the menu stays dead center */
+            flex: 1;
+            justify-content: flex-end; /* Pushes text to the far right */
+        }
+
+        .nav-actions a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* --- Hamburger Menu Icon (Hidden on Desktop) --- */
+        #menu-toggle, .menu-icon {
+            display: none; 
+        }
+
+        /* The Label acts as the Hamburger Icon */
+        .menu-icon {
+            display: none; /* Hidden on desktop */
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* --- Main Content Area --- */
+        .hero-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .hero-section h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* --- MEDIA QUERIES (Mobile View) [cite: 26, 59] --- */
+        @media (max-width: 768px) {
+            
+            /* Show Hamburger Icon */
+            .menu-icon {
+                display: block; /* [cite: 61] */
+                order: 1; /* Adjust visual order if needed */
+            }
+
+            /* Hide Links by default on mobile [cite: 60] */
+            .nav-links {
+                display: none;
+                width: 100%; /* Full width for drop down */
+                flex-direction: column; /* Stack vertical [cite: 23] */
+                text-align: center;
+                padding-top: 20px;
+                order: 3; /* Force links to drop to the bottom */
+            }
+
+            .nav-links li {
+                padding: 10px 0;
+                border-bottom: 1px solid #444;
+            }
+
+            /* Actions stay visible on top right */
+            .nav-actions {
+                order: 2;
+            }
+
+            /* CHECKBOX HACK LOGIC [cite: 55, 63] */
+            /* When checkbox is checked, select the sibling .nav-links and display it */
+            #menu-toggle:checked ~ .nav-links {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ShopEase</div>
+
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label> <div class="nav-actions">
+            <a href="#">Cart <i class="fas fa-shopping-cart"></i></a>
+            <a href="#">Login</a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>cd
+
+    <div class="hero-section">
+        <h1>Welcome to ShopEase!</h1>
+        <p>Your one-stop destination for all shopping needs.</p>
+    </div>
+
+</body>
+</html>
